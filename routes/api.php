@@ -9,7 +9,6 @@ use App\Http\Controllers\api\v1\DashboardController;
 use App\Http\Controllers\api\v1\MetaDataController;
 use App\Http\Controllers\BlogPdfController;
 use App\Http\Controllers\client\HomeController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SocialAuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
