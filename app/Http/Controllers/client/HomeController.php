@@ -4,8 +4,11 @@ namespace App\Http\Controllers\client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Message;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+
 
 use function App\Helper\apiResponse;
 use function App\Helper\handleException;
@@ -83,6 +86,15 @@ class HomeController extends Controller
                 "error" => $e->getMessage(),
             ], 500);
         }
+    }
+
+    public function welcomeMessage(){
+       
+        return handleException(function(){
+            $message = Message::latest()->first();
+            return apiResponse($message,"Welcome Message Fetched Successfully",200);
+        });
+
     }
 
     
