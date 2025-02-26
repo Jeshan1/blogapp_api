@@ -36,6 +36,7 @@ Route::post('/send-reset-password-email',[AuthController::class, 'send_reset_pas
 Route::post('/reset-password/{token}',[AuthController::class, 'reset_password']);
 Route::get('/auth/google', [SocialAuthController::class, 'redirectToProvider']);
 Route::get('/auth/google/callback', [SocialAuthController::class, 'handleProviderCallback']);
+Route::get('/welcome-message',[HomeController::class, 'welcomeMessage']);
 
 //client
 Route::group(['prefix'=>'client'], function(){
