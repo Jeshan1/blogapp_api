@@ -1,0 +1,35 @@
+services:
+  # App Server
+  laravel-docker-app:
+    container_name: blogapp_api
+    build: .
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8000:80"
+    depends_on:
+      - mysql_db
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html/public
+    restart: unless-stopped
+
+  # Database Server
+  mysql_db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root 
+      MYSQL_DATABASE: blogapp_api
+    ports:
+      - "3306:3306"
+
+  # PHPMyAdmin server
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - "8002:80"
+    environment:
+      PMA_HOST: mysql_db
+      PMA_USER: root
+      PMA_PASSWORD: root
+    depends_on:
+      - mysql_db
